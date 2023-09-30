@@ -1,1 +1,0 @@
-readme for shell permission
