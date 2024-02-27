@@ -1,2 +1,13 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/School/).join
+
+require 'oniguruma'
+
+regex_pattern = /School/
+
+input_argument = ARGV[0]
+
+if input_argument =~ regex_pattern
+  puts "The input '#{input_argument}' matches the term 'School'."
+else
+  puts "The input '#{input_argument}' does not match the term 'School'."
+end
