@@ -3,9 +3,7 @@
 
 if [ "$#" -eq 0 ]
 then
-        echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
-    for i in {1..5}; do
-        ping -c 1 "$1"
-    done
+	ping -c 5 "$1"
 fi
