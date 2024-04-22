@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script creates an RSA key pair with 4096 bits and a passphrase 'betty'
+
+# Generate the key pair with the specified options
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/school -N "betty" -C "school"
+
+# Check if the key generation was successful
+if [ $? -eq 0 ]; then
+    echo "RSA key pair created successfully."
+    echo "Private key: ~/.ssh/school"
+    echo "Public key: ~/.ssh/school.pub"
+else
+    echo "Error: Failed to create RSA key pair."
+    exit 1
+fi

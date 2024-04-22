@@ -4,7 +4,7 @@
 # Check if the private key file exists
 if [ -f ~/.ssh/school ]; then
     # Connect to the server using ssh with the specified flags
-    ssh -i ~/.ssh/school -o "IdentitiesOnly=yes" ubuntu@100.25.183.41
+    ssh -i ~/.ssh/school -o "IdentitiesOnly=yes" ubuntu@your_server_ip
 else
     echo "Error: Private key file ~/.ssh/school not found."
     exit 1
