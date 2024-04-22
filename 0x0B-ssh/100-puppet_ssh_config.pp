@@ -1,25 +1,15 @@
-# Define the path to the SSH configuration file
-$ssh_config_path = '/home/ubuntu/.ssh/config'
+# Configure the SSH client configuration file
 
-# Ensure the .ssh directory exists
-file { '/home/ubuntu/.ssh':
-  ensure => directory,
-  owner  => 'ubuntu',
-  group  => 'ubuntu',
-  mode   => '0700',
-}
-
-# Manage the SSH configuration file
-file { $ssh_config_path:
+file { '/etc/ssh/ssh_config':
   ensure  => present,
-  owner   => 'ubuntu',
-  group   => 'ubuntu',
+  owner   => 'root',
+  group   => 'root',
   mode    => '0644',
   content => @("EOF")
-    # SSH client configuration managed by Puppet
+# SSH client configuration managed by Puppet
 
-    Host *
-        IdentityFile ~/.ssh/school
-        PasswordAuthentication no
-    | EOF
+Host *
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+    EOF
 }
