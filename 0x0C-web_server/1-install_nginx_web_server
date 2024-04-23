@@ -7,6 +7,9 @@ sudo apt-get update
 # Install Nginx
 sudo apt-get install -y nginx
 
+# Remove the default Nginx configuration
+sudo rm /etc/nginx/sites-enabled/default
+
 # Create custom Nginx configuration file
 cat << EOF | sudo tee /etc/nginx/sites-available/default
 server {
@@ -27,13 +30,10 @@ EOF
 # Create the HTML file with the desired content
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
-# Remove the default Nginx configuration
-sudo rm /etc/nginx/sites-enabled/default
-
 # Enable the new configuration
 sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
 # Restart Nginx
-sudo nginx -s reload
+sudo service nginx restart
 
 echo "Nginx has been configured and is now running."
