@@ -7,9 +7,11 @@ sudo apt-get update
 # Install Nginx
 sudo apt-get install -y nginx
 
+# Get the hostname of the server
+HOSTNAME=$(hostname)
+
 # Create a custom Nginx configuration file
-sudo touch /etc/nginx/sites-available/default
-sudo cat << 'EOF' > /etc/nginx/sites-available/default
+sudo cat << EOF > /etc/nginx/sites-available/default
 server {
     listen 80 default_server;
     listen [::]:80 default_server;
@@ -20,8 +22,8 @@ server {
     server_name _;
 
     location / {
-        try_files $uri $uri/ =404;
-        add_header X-Served-By $hostname;
+        try_files \$uri \$uri/ =404;
+        add_header X-Served-By $HOSTNAME;
     }
 }
 EOF
